@@ -85,4 +85,17 @@ public class AddressBookContactModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public void displayAddressBook() {
+		System.out.println(" ");
+		System.out.println("First Name : " + firstName);
+		System.out.println("Last Name : " + lastName);
+		System.out.println("Address : " + address);
+		System.out.println("City Name : " + city);
+		System.out.println("Email : " + state);
+		System.out.println("Zip Code : " + zip);
+		System.out.println("Phone Number : " + phoneNumber);
+		System.out.println("Email : " + email);
+	}
+
 }
