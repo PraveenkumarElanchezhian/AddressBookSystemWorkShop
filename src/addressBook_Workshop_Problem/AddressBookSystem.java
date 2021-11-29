@@ -135,8 +135,24 @@ public class AddressBookSystem {
 		for (AddressBookContactModel search : list) {
 			System.out.println(" ");
 			System.out.println("View person's contact number by City or State wise : ");
-			System.out.println("Person name :: " + search.getFirstName() + "|| Phone no :: " + search.getPhoneNumber()+ "|| State :: " + search.getState());
-			System.out.println("Person name :: " + search.getFirstName() + "|| Phone no :: " + search.getPhoneNumber()+ "|| City :: " + search.getCity());
+			System.out.println("Person name :: " + search.getFirstName() + "|| Phone no :: " + search.getPhoneNumber()
+					+ "|| State :: " + search.getState());
+			System.out.println("Person name :: " + search.getFirstName() + "|| Phone no :: " + search.getPhoneNumber()
+					+ "|| City :: " + search.getCity());
+			System.out.println(" ");
+		}
+	}
+
+// View Address book by persons name ::
+	private void viewAddressBook_by_PersonsName() {
+		Collections.sort(list, (o1, o2) -> (o1.getFirstName().compareTo(o2.getFirstName())));
+		for (AddressBookContactModel search : list) {
+			System.out.println(" ");
+			System.out.println("Address Book sort by Person’s name : ");
+			System.out.println("|| lastName :: " + search.getLastName() + "|| Address :: " + search.getAddress()
+					+ "|| City :: " + search.getCity() + "|| State :: " + search.getState() + "|| zipcode :: "
+					+ search.getZip() + "|| Phone no :: " + search.getPhoneNumber() + "|| email-ID :: "
+					+ search.getEmail() + "-> Person name :: " + search.getFirstName());
 			System.out.println(" ");
 		}
 	}
@@ -225,6 +241,7 @@ public class AddressBookSystem {
 			AddressBookSystem myAddressBookSystem = new AddressBookSystem();
 			myAddressBookSystem.viewPersons();
 			myAddressBookSystem.viewPersonsContactNumber();
+			myAddressBookSystem.viewAddressBook_by_PersonsName();
 		}
 	}
 }
