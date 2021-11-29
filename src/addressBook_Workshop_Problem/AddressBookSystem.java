@@ -89,14 +89,19 @@ public class AddressBookSystem {
 
 	public static void main(String[] args) {
 		Scanner userInput = new Scanner(System.in);
-		HashMap<String, AddressBookContactModel> myaddressBooks = new HashMap<>();
+		HashMap<String, AddressBookSystem> addressBooks = new HashMap<>();
 		AddressBookSystem bookOne = new AddressBookSystem();
 		AddressBookSystem bookTwo = new AddressBookSystem();
-		System.out.println("Choose your Address Book : AddressBook-> 1 / AddressBook-> 2");
+		AddressBookSystem bookThree = new AddressBookSystem();
+		addressBooks.put("AddressBook", bookOne);
+		addressBooks.put("AddressBook2", bookTwo);
+		addressBooks.put("AddressBook3", bookThree);
+		System.out.println("Choose your Address Book : AddressBook(1)/ AddressBook(2)/ AddressBook(3)");
 		int chooseAddressBook = userInput.nextInt();
 		System.out.println("Choose your Address Book : Add/Edit/Delete");
 		while (chooseAddressBook >= 1) {
-			System.out.println("Enter Your Choice : Add Contacts(1)/Edit Contacts(2)/Delete Contacts(3)");
+			System.out.println(
+					"Enter Your Choice : Add Contacts (1)/Edit Contacts (2)/Delete Contacts (3)");
 			int choice = userInput.nextInt();
 			switch (chooseAddressBook) {
 			case 1:
@@ -104,20 +109,28 @@ public class AddressBookSystem {
 					bookOne.AddContactsDetails();
 				} else if (choice == 2) {
 					bookOne.editExistingContact();
-				}else if (choice == 3) {
+				} else if (choice == 3) {
 					bookOne.deleteExistingContact();
-				}
+				} 
 				break;
 			case 2:
 				if (choice == 1) {
 					bookTwo.AddContactsDetails();
 				} else if (choice == 2) {
 					bookTwo.editExistingContact();
-				}else if (choice == 3) {
-					bookOne.deleteExistingContact();
+				} else if (choice == 3) {
+					bookTwo.deleteExistingContact();
+				} 
+				break;
+			case 3:
+				if (choice == 1) {
+					bookThree.AddContactsDetails();
+				} else if (choice == 2) {
+					bookThree.editExistingContact();
+				} else if (choice == 3) {
+					bookThree.deleteExistingContact();
 				}
 				break;
-
 			default:
 				System.out.println("Give proper input");
 				break;
@@ -127,6 +140,5 @@ public class AddressBookSystem {
 			System.out.println("3) AddressBook 3");
 			System.out.println("0) Exit");
 		}
-
 	}
 }
