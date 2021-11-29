@@ -72,19 +72,31 @@ public class AddressBookSystem {
 		}
 	}
 
+//Delete the existing contacts in AddressBook =>
+	private void deleteExistingContact() {
+		Scanner userInput = new Scanner(System.in);
+		System.out.println("Enter firstname to Delete Contact : ");
+		String name = userInput.nextLine();
+		for (AddressBookContactModel search : list) {
+			if (name.equalsIgnoreCase(search.getFirstName())) {
+				System.out.println("Given name is found in Address Book, deleting contact");
+				list.remove(search);
+			} else {
+				System.out.println("Give proper name");
+			}
+		}
+	}
+
 	public static void main(String[] args) {
-//		AddressBookSystem myAddressBookSystem = new AddressBookSystem();
-//		myAddressBookSystem.AddContactsDetails();
-//		myAddressBookSystem.editExistingContact();
 		Scanner userInput = new Scanner(System.in);
 		HashMap<String, AddressBookContactModel> myaddressBooks = new HashMap<>();
 		AddressBookSystem bookOne = new AddressBookSystem();
 		AddressBookSystem bookTwo = new AddressBookSystem();
 		System.out.println("Choose your Address Book : AddressBook(1)/ AddressBook(2)");
 		int chooseAddressBook = userInput.nextInt();
-		System.out.println("Choose your Address Book : Add/Edit");
+		System.out.println("Choose your Address Book : Add/Edit/Delete");
 		while (chooseAddressBook >= 1) {
-			System.out.println("Enter Your Choice : Add Contacts (1)/Edit Contacts (2)");
+			System.out.println("Enter Your Choice : Add Contacts(1)/Edit Contacts(2)/Delete Contacts(3)");
 			int choice = userInput.nextInt();
 			switch (chooseAddressBook) {
 			case 1:
@@ -92,6 +104,8 @@ public class AddressBookSystem {
 					bookOne.AddContactsDetails();
 				} else if (choice == 2) {
 					bookOne.editExistingContact();
+				}else if (choice == 3) {
+					bookOne.deleteExistingContact();
 				}
 				break;
 			case 2:
@@ -99,6 +113,8 @@ public class AddressBookSystem {
 					bookTwo.AddContactsDetails();
 				} else if (choice == 2) {
 					bookTwo.editExistingContact();
+				}else if (choice == 3) {
+					bookOne.deleteExistingContact();
 				}
 				break;
 
