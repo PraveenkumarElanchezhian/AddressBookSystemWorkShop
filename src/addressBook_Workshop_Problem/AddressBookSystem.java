@@ -145,6 +145,7 @@ public class AddressBookSystem {
 			System.out.println("5 -> Search person ");
 			int choice = userInput.nextInt();
 			switch (chooseAddressBook) {
+			
 			case 1:
 				if (choice == 1) {
 					bookOne.AddContactsDetails();
@@ -158,6 +159,7 @@ public class AddressBookSystem {
 					bookOne.searchPerson();
 				}
 				break;
+				
 			case 2:
 				if (choice == 1) {
 					bookTwo.AddContactsDetails();
@@ -171,6 +173,7 @@ public class AddressBookSystem {
 					bookTwo.searchPerson();
 				}
 				break;
+				
 			case 3:
 				if (choice == 1) {
 					bookTwo.AddContactsDetails();
@@ -184,6 +187,7 @@ public class AddressBookSystem {
 					bookTwo.searchPerson();
 				}
 				break;
+				
 			default:
 				System.out.println("Give proper input");
 				break;
@@ -192,7 +196,6 @@ public class AddressBookSystem {
 			System.out.println(" 2 -> AddressBook 2");
 			System.out.println(" 3 -> AddressBook 3");
 			System.out.println(" 0 -> Exit");
-
 		}
 	}
 }
