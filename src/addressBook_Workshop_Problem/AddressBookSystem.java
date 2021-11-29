@@ -129,6 +129,18 @@ public class AddressBookSystem {
 		}
 	}
 
+// View persons contact number by City or State wise ::
+	private void viewPersonsContactNumber() {
+		Collections.sort(list, (o1, o2) -> (o1.getState().compareTo(o2.getState())));
+		for (AddressBookContactModel search : list) {
+			System.out.println(" ");
+			System.out.println("View person's contact number by City or State wise : ");
+			System.out.println("Person name :: " + search.getFirstName() + "|| Phone no :: " + search.getPhoneNumber()+ "|| State :: " + search.getState());
+			System.out.println("Person name :: " + search.getFirstName() + "|| Phone no :: " + search.getPhoneNumber()+ "|| City :: " + search.getCity());
+			System.out.println(" ");
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book Program");
 		Scanner userInput = new Scanner(System.in);
@@ -209,9 +221,10 @@ public class AddressBookSystem {
 			System.out.println(" 2 -> AddressBook 2");
 			System.out.println(" 3 -> AddressBook 3");
 			System.out.println(" 0 -> Exit");
-			
+
 			AddressBookSystem myAddressBookSystem = new AddressBookSystem();
 			myAddressBookSystem.viewPersons();
+			myAddressBookSystem.viewPersonsContactNumber();
 		}
 	}
 }
