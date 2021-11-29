@@ -92,7 +92,7 @@ public class AddressBookSystem {
 		HashMap<String, AddressBookContactModel> myaddressBooks = new HashMap<>();
 		AddressBookSystem bookOne = new AddressBookSystem();
 		AddressBookSystem bookTwo = new AddressBookSystem();
-		System.out.println("Choose your Address Book : AddressBook(1)/ AddressBook(2)");
+		System.out.println("Choose your Address Book : AddressBook-> 1 / AddressBook-> 2");
 		int chooseAddressBook = userInput.nextInt();
 		System.out.println("Choose your Address Book : Add/Edit/Delete");
 		while (chooseAddressBook >= 1) {
