@@ -2,8 +2,11 @@ package addressBook_Workshop_Problem;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBookSystem {
 	private static ArrayList<AddressBookContactModel> list = new ArrayList<AddressBookContactModel>();
@@ -157,6 +160,24 @@ public class AddressBookSystem {
 		}
 	}
 
+// View Address book by City,State or Zip ::
+	private void viewAddressBook_by_City_Sate() {
+		Comparator<AddressBookContactModel> compareByCitySate = Comparator.comparing(AddressBookContactModel::getCity)
+				.thenComparing(AddressBookContactModel::getState);
+
+		List<AddressBookContactModel> sortedviewAddressBook_by_City_Sate = list.stream().sorted(compareByCitySate)
+				.collect(Collectors.toList());
+		for (AddressBookContactModel result : list) {
+			System.out.println(" ");
+			System.out.println(" View Address book by City,State or Zip : ");
+			System.out.println("|| FirstName :: " + result.getFirstName() + "|| lastName :: " + " "
+					+ result.getLastName() + "|| Address :: " + result.getAddress() + "|| zipcode :: " + result.getZip()
+					+ "|| Phone no :: " + result.getPhoneNumber() + "|| email-ID :: " + result.getEmail()
+					+ "-> City :: " + result.getCity() + "-> State :: " + result.getState());
+			System.out.println(" ");
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book Program");
 		Scanner userInput = new Scanner(System.in);
@@ -242,6 +263,7 @@ public class AddressBookSystem {
 			myAddressBookSystem.viewPersons();
 			myAddressBookSystem.viewPersonsContactNumber();
 			myAddressBookSystem.viewAddressBook_by_PersonsName();
+			myAddressBookSystem.viewAddressBook_by_City_Sate();
 		}
 	}
 }
