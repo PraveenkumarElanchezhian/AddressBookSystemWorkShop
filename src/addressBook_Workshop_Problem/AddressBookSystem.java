@@ -79,8 +79,22 @@ public class AddressBookSystem {
 		String name = userInput.nextLine();
 		for (AddressBookContactModel search : list) {
 			if (name.equalsIgnoreCase(search.getFirstName())) {
-				System.out.println("Given name is found in Address Book, deleting contact");
+				System.out.println("Given name found in Address Book, deleting contact");
 				list.remove(search);
+			} else {
+				System.out.println("Give proper name");
+			}
+		}
+	}
+
+// Duplicate entry checking in AddressBook =>
+	private void checkDuplicateEntry() {
+		Scanner userInput = new Scanner(System.in);
+		System.out.println("Enter firstname to Check duplicate entry Contact: ");
+		String name = userInput.nextLine();
+		for (AddressBookContactModel search : list) {
+			if (name.equalsIgnoreCase(search.getFirstName())) {
+				System.out.println("Given name found in the Address Book");
 			} else {
 				System.out.println("Give proper name");
 			}
@@ -98,10 +112,10 @@ public class AddressBookSystem {
 		addressBooks.put("AddressBook3", bookThree);
 		System.out.println("Choose your Address Book : AddressBook(1)/ AddressBook(2)/ AddressBook(3)");
 		int chooseAddressBook = userInput.nextInt();
-		System.out.println("Choose your Address Book : Add/Edit/Delete");
+		System.out.println("Choose your Address Book : Add/Edit/Delete/Duplicate");
 		while (chooseAddressBook >= 1) {
 			System.out.println(
-					"Enter Your Choice : Add Contacts (1)/Edit Contacts (2)/Delete Contacts (3)");
+					"Enter Your Choice : AddContacts (1)/EditContacts (2)/DeleteContacts (3)/ DuplicateEntry (4)");
 			int choice = userInput.nextInt();
 			switch (chooseAddressBook) {
 			case 1:
@@ -111,7 +125,9 @@ public class AddressBookSystem {
 					bookOne.editExistingContact();
 				} else if (choice == 3) {
 					bookOne.deleteExistingContact();
-				} 
+				} else if (choice == 4) {
+					bookOne.checkDuplicateEntry();
+				}
 				break;
 			case 2:
 				if (choice == 1) {
@@ -120,7 +136,9 @@ public class AddressBookSystem {
 					bookTwo.editExistingContact();
 				} else if (choice == 3) {
 					bookTwo.deleteExistingContact();
-				} 
+				}else if (choice == 4) {
+					bookTwo.checkDuplicateEntry();
+				}
 				break;
 			case 3:
 				if (choice == 1) {
@@ -129,6 +147,8 @@ public class AddressBookSystem {
 					bookThree.editExistingContact();
 				} else if (choice == 3) {
 					bookThree.deleteExistingContact();
+				}else if (choice == 4) {
+					bookThree.checkDuplicateEntry();
 				}
 				break;
 			default:
