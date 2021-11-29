@@ -1,6 +1,7 @@
 package addressBook_Workshop_Problem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -116,6 +117,18 @@ public class AddressBookSystem {
 		}
 	}
 
+// View persons by City || state wise =>
+	private void viewPersons() {
+		Collections.sort(list, (o1, o2) -> (o1.getState().compareTo(o2.getState())));
+		for (AddressBookContactModel search : list) {
+			System.out.println(" ");
+			System.out.println("View person's by City or State wise : ");
+			System.out.println("The person name is " + search.getFirstName() + " from " + search.getState() + " State");
+			System.out.println("The person name is " + search.getFirstName() + " from " + search.getCity() + " City");
+			System.out.println(" ");
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book Program");
 		Scanner userInput = new Scanner(System.in);
@@ -127,10 +140,10 @@ public class AddressBookSystem {
 		addressBooks.put("AddressBook2", bookTwo);
 		addressBooks.put("AddressBook3", bookThree);
 		System.out.println(" ");
-		System.out.println("Choose your AddressBook : "+"  ");
-		System.out.print("Enter 1 -> AddressBookOne"+" || ");
-		System.out.print("Enter 2 -> AddressBookTwo"+" || ");
-		System.out.print("Enter 3 -> AddressBookThree"+"  ");
+		System.out.println("Choose your AddressBook : " + "  ");
+		System.out.print("Enter 1 -> AddressBookOne" + " || ");
+		System.out.print("Enter 2 -> AddressBookTwo" + " || ");
+		System.out.print("Enter 3 -> AddressBookThree" + "  ");
 		System.out.println(" ");
 		int chooseAddressBook = userInput.nextInt();
 		System.out.println("Choose your Address Book : ");
@@ -145,7 +158,7 @@ public class AddressBookSystem {
 			System.out.println("5 -> Search person ");
 			int choice = userInput.nextInt();
 			switch (chooseAddressBook) {
-			
+
 			case 1:
 				if (choice == 1) {
 					bookOne.AddContactsDetails();
@@ -159,7 +172,7 @@ public class AddressBookSystem {
 					bookOne.searchPerson();
 				}
 				break;
-				
+
 			case 2:
 				if (choice == 1) {
 					bookTwo.AddContactsDetails();
@@ -173,7 +186,7 @@ public class AddressBookSystem {
 					bookTwo.searchPerson();
 				}
 				break;
-				
+
 			case 3:
 				if (choice == 1) {
 					bookTwo.AddContactsDetails();
@@ -187,7 +200,7 @@ public class AddressBookSystem {
 					bookTwo.searchPerson();
 				}
 				break;
-				
+
 			default:
 				System.out.println("Give proper input");
 				break;
@@ -196,6 +209,9 @@ public class AddressBookSystem {
 			System.out.println(" 2 -> AddressBook 2");
 			System.out.println(" 3 -> AddressBook 3");
 			System.out.println(" 0 -> Exit");
+			
+			AddressBookSystem myAddressBookSystem = new AddressBookSystem();
+			myAddressBookSystem.viewPersons();
 		}
 	}
 }
