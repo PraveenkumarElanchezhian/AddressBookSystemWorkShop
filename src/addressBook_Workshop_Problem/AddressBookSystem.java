@@ -101,7 +101,23 @@ public class AddressBookSystem {
 		}
 	}
 
+// Search person in AddressBook =>
+	private void searchPerson() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter city to search person entry in Contact: ");
+		String city = sc.nextLine();
+		for (AddressBookContactModel search : list) {
+			if (city.equalsIgnoreCase(search.getCity())) {
+				System.out.println("Entered city found in the Address Book");
+				search.displayAddressBook();
+			} else {
+				System.out.println("Entered city not found in the Address Book");
+			}
+		}
+	}
+
 	public static void main(String[] args) {
+		System.out.println("Welcome to Address Book Program");
 		Scanner userInput = new Scanner(System.in);
 		HashMap<String, AddressBookSystem> addressBooks = new HashMap<>();
 		AddressBookSystem bookOne = new AddressBookSystem();
@@ -110,12 +126,23 @@ public class AddressBookSystem {
 		addressBooks.put("AddressBook", bookOne);
 		addressBooks.put("AddressBook2", bookTwo);
 		addressBooks.put("AddressBook3", bookThree);
-		System.out.println("Choose your Address Book : AddressBook(1)/ AddressBook(2)/ AddressBook(3)");
+		System.out.println(" ");
+		System.out.println("Choose your AddressBook : "+"  ");
+		System.out.print("Enter 1 -> AddressBookOne"+" || ");
+		System.out.print("Enter 2 -> AddressBookTwo"+" || ");
+		System.out.print("Enter 3 -> AddressBookThree"+"  ");
+		System.out.println(" ");
 		int chooseAddressBook = userInput.nextInt();
-		System.out.println("Choose your Address Book : Add/Edit/Delete/Duplicate");
+		System.out.println("Choose your Address Book : ");
+		System.out.println("Add || Edit || Delete || DuplicateEntry || SearchPerson ");
+		System.out.println(" ");
 		while (chooseAddressBook >= 1) {
-			System.out.println(
-					"Enter Your Choice : AddContacts (1)/EditContacts (2)/DeleteContacts (3)/ DuplicateEntry (4)");
+			System.out.println("Enter Your Choice : ");
+			System.out.println("1 -> Add Contacts ");
+			System.out.println("2 -> Edit Contacts ");
+			System.out.println("3 -> Delete Contacts ");
+			System.out.println("4 -> Check Duplicate Entry ");
+			System.out.println("5 -> Search person ");
 			int choice = userInput.nextInt();
 			switch (chooseAddressBook) {
 			case 1:
@@ -127,6 +154,8 @@ public class AddressBookSystem {
 					bookOne.deleteExistingContact();
 				} else if (choice == 4) {
 					bookOne.checkDuplicateEntry();
+				} else if (choice == 5) {
+					bookOne.searchPerson();
 				}
 				break;
 			case 2:
@@ -136,29 +165,34 @@ public class AddressBookSystem {
 					bookTwo.editExistingContact();
 				} else if (choice == 3) {
 					bookTwo.deleteExistingContact();
-				}else if (choice == 4) {
+				} else if (choice == 4) {
 					bookTwo.checkDuplicateEntry();
+				} else if (choice == 5) {
+					bookTwo.searchPerson();
 				}
 				break;
 			case 3:
 				if (choice == 1) {
-					bookThree.AddContactsDetails();
+					bookTwo.AddContactsDetails();
 				} else if (choice == 2) {
-					bookThree.editExistingContact();
+					bookTwo.editExistingContact();
 				} else if (choice == 3) {
-					bookThree.deleteExistingContact();
-				}else if (choice == 4) {
-					bookThree.checkDuplicateEntry();
+					bookTwo.deleteExistingContact();
+				} else if (choice == 4) {
+					bookTwo.checkDuplicateEntry();
+				} else if (choice == 5) {
+					bookTwo.searchPerson();
 				}
 				break;
 			default:
 				System.out.println("Give proper input");
 				break;
 			}
-			System.out.println("1) AddressBook 1");
-			System.out.println("2) AddressBook 2");
-			System.out.println("3) AddressBook 3");
-			System.out.println("0) Exit");
+			System.out.println(" 1 -> AddressBook 1");
+			System.out.println(" 2 -> AddressBook 2");
+			System.out.println(" 3 -> AddressBook 3");
+			System.out.println(" 0 -> Exit");
+
 		}
 	}
 }
